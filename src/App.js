@@ -12,8 +12,8 @@ function App() {
     },
     {
       id: 2,
-      title: "주말에 착용할 리본 핀 고르기",
-      body: "주말에 착용할 리본 핀을 골라보죠!",
+      title: "카페 고르기",
+      body: "주말에 방문할 카페를 골라보죠!",
       isDone: false,
     },
     {
@@ -53,24 +53,31 @@ function App() {
     setTodo(newTodo);
   };
 
-  //완료 클릭하면 이동하기
+  //완료 클릭하면 이동하기 섹션
+
+  //워킹 투두  -> 투두 내용중 필터함수는 true 혹은 false를 반환하는데 이건 !라고 적혀있어서 false인것만 포함해서 필터하기
   const workingTodos = todo.filter(function (item) {
     return !item.isDone;
   });
 
+  //돈 투두 -> 이건 ture인것만 필터하기
   const doneTodos = todo.filter(function (item) {
     return item.isDone;
   });
 
   function finishButton(id) {
-    setTodo(function (prevTodos) {
-      return prevTodos.map(function (item) {
+    setTodo(function (prev) {
+      // SetTodo로 새롭게 반환된걸 가져옴
+      return prev.map(function (item) {
+        // map으로 새로운 배열을 생성함
         if (item.id === id) {
+          //item의 아이디와 68번줄의 아이디를 비교해서
           // isDone 값을 반대로 업데이트
-          const updatedItem = { ...item, isDone: !item.isDone };
-          return updatedItem;
+          const updatedItem = { ...item, isDone: !item.isDone }; // 스프레드오퍼레이터로 item을 복사하고 복사한 객체의 isDone을 반대로 변경함
+
+          return updatedItem; // 그러면 73번줄의 복사한 객체를 그대로 반환함
         }
-        return item;
+        return item; // 만약 71번줄에서 일치하지않으면 그냥 그대로 반환함
       });
     });
   }
@@ -128,7 +135,7 @@ function App() {
                       className="btn-finish"
                       onClick={() => finishButton(item.id)}
                     >
-                      {item.isDone ? "취소" : "완료"}
+                      완료
                     </button>
                   </article>
                 </div>
@@ -166,7 +173,7 @@ function App() {
                       className="btn-finish"
                       onClick={() => finishButton(item.id)}
                     >
-                      완료
+                      취소
                     </button>
                   </article>
                 </div>
