@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 function TodoAdd({ todo, setTodo, title, setTitle, text, setText }) {
   const onSubmitHandler = (e) => {
     e.preventDefault(); //새로고침 막는 것
