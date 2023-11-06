@@ -24,8 +24,8 @@ function App() {
     },
     {
       id: 2,
-      title: "카페 고르기",
-      body: "주말에 방문할 카페를 골라보죠!",
+      title: "자바스크립트 공부",
+      body: "자바스크립트 공부하기",
       isDone: false,
     },
     {
